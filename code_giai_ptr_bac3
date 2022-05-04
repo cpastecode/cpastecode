@@ -1,0 +1,32 @@
+#include<stdio.h>
+#include<math.h>
+
+int main () {
+	float a,b,c,d,k,delta,x1,x2,x3,x,X,x0;
+	printf (" nhap a,b,c,d: ");
+	scanf ("%f%f%f%f",&a,&b,&c,&d);
+	delta=b*b-3*a*c;
+	k= (9*a*b*c -2*pow(c,3) -27*a*a*d) / (2*sqrt( pow (fabs(delta),3)));
+	
+	if (delta>0) {
+		if (fabs(k)<=1) {
+			x1=(2*sqrt(delta)*cos(acos(k)/3)-b) / (3*a);
+			x2=(2*sqrt(delta)*cos(acos(k)/3 -2*M_PI/3)-b) / (3*a);
+			x3=(2*sqrt(delta)*cos(acos(k)/3 +2*M_PI/3)-b) / (3*a);
+			printf (" phuong trinh co ba nghiem: \nx1=%5.3f \nx2=%5.3f \n%5.3f",x1, x2, x3);
+		}
+		if( fabs(k)>1) {
+			x=((sqrt(delta)*fabs(k))/(3*a*k))*(pow(fabs(k)+sqrt(k*k-1),1.0/3)+pow(fabs(k)-sqrt(k*k-1),1.0/3))-(b/(3*a));
+			printf (" phuong trinh co mot nghiem: %5.3f",x);
+		}
+	}
+	if(delta=0) {
+		X=(-b+pow(b*b*b-27*a*a*d,1.0/3))/(3*a);
+		printf ("phuong trinh co mot nghiem boi %5.3f", X);
+	}
+	if(delta<0) {
+		x0=(sqrt(fabs(delta))/(3*a))*(pow(k+sqrt(k*k+1),1.0/3)+pow(k-sqrt(k*k+1),1.0/3))-(b/(3*a));
+		printf (" phuong trinh co mot nghiem duy nhat %5.3f", x0);
+	}
+	return 0;
+}
